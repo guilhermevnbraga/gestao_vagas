@@ -4,6 +4,8 @@ import br.com.guilhermevnbraga.gestao_vagas.modules.company.dto.AuthCompanyDTO;
 import br.com.guilhermevnbraga.gestao_vagas.modules.company.repositories.CompanyRepository;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import java.time.Duration;
+import java.time.Instant;
 import javax.naming.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +24,8 @@ public class AuthCompanyUseCase {
       throws AuthenticationException {
     var company =
         this.companyRepository.findByUsername(authCompanyDTO.getUsername())
-            .orElseThrow(() -> new RuntimeException("Username or Password incorrect"));
+            .orElseThrow(
+                () -> new RuntimeException("Username or Password incorrectf"));
 
     var passwordMatches = this.passwordEncoder.matches(
         authCompanyDTO.getPassword(), company.getPassword());
@@ -34,6 +37,7 @@ public class AuthCompanyUseCase {
     Algorithm algorithm = Algorithm.HMAC256(secretKey);
     String token = JWT.create()
                        .withIssuer("javagas")
+                       .withExpiresAt(Instant.now().plus(Duration.ofHours(2)))
                        .withSubject(company.getId().toString())
                        .sign(algorithm);
     return token;
