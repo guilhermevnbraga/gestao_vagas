@@ -1,6 +1,6 @@
 package br.com.guilhermevnbraga.gestao_vagas.modules.candidate.controllers;
 
-import br.com.guilhermevnbraga.gestao_vagas.modules.candidate.CandidateEntity;
+import br.com.guilhermevnbraga.gestao_vagas.modules.candidate.entities.CandidateEntity;
 import br.com.guilhermevnbraga.gestao_vagas.modules.candidate.useCases.CreateCandidateUseCase;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
