@@ -75,6 +75,11 @@
         </dependency>
     </dependencies>
 
+    <dependencies>
+        <groupId>com.auth0</groupId>
+        <artifactId>java-jwt</artifactId>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
