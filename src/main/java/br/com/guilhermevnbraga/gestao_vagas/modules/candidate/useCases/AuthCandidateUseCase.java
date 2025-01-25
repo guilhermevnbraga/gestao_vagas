@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthCandidateUseCase {
-  @Value("${security.jwt.secret.candidate}") private String secretKey;
+  @Value("${security.token.secret.candidate}") private String secretKey;
 
   @Autowired private CandidateRepository candidateRepository;
 
