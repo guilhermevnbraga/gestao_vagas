@@ -27,7 +27,7 @@ public class SecurityCandidateFilter extends OncePerRequestFilter {
       throws ServletException, IOException {
     String header = request.getHeader("Authorization");
 
-    if (request.getRequestURI().contains("/candidate/")) {
+    if (request.getRequestURI().contains("/candidate")) {
       if (header != null) {
         var token = this.jwtProvider.validateToken(header);
 
